@@ -8,6 +8,7 @@ const CartsSchema = require('../Carts');
 const OrdersSchema = require('../Orders');
 const CommentsSchema = require('../Comments');
 const StadiumsSchema = require('../Stadiums');
+const BookingsSchema = require('../Bookings');
 const models = {};
 
 module.exports = {
@@ -17,6 +18,7 @@ module.exports = {
     orders: OrdersSchema,
     comments: CommentsSchema,
     stadiums: StadiumsSchema,
+    bookings: BookingsSchema,
     connectToModels: ({ databaseName, currentModels = [], otherModels = [] }) => {
         const conn = connectDatabase(databaseName);
         otherModels.map((model) => {

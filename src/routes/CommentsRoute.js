@@ -7,11 +7,11 @@ const {
 } = require('../utils/shared');
 router.get('/comments/list', async (req, res) => {
     try {
-        const { productObjId } = req.query;
+        const { stadiumObjId } = req.query;
         const conditions = {
             isDeleted: "No"
         };
-        conditions.productObjId = convertToObjectId(productObjId);
+        conditions.stadiumObjId = convertToObjectId(stadiumObjId);
         const result = await CommentsModel.find(conditions);
         if (result) {
             return res.json(responseSuccess("List comment successfully!", result));
@@ -26,12 +26,13 @@ router.get('/comments/list', async (req, res) => {
 router.post('/comments/create', async (req, res) => {
     try {
         const { comment, brief, rating,
-            productObjId } = req.body;
+            productObjId, userObjId } = req.body;
         const set = {};
         set.comment = comment;
         set.brief = brief;
         set.rating = rating;
-        set.productObjId = convertToObjectId(productObjId);
+        set.stadiumObjId = convertToObjectId(stadiumObjId);
+        set.userObjId = convertToObjectId(userObjId);
         const result = await CommentsModel.create(set);
         if (result) {
             return res.json(responseSuccess("Create a comment successfully!", result));

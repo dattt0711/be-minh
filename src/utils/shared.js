@@ -5,7 +5,6 @@ const generatorTime = () => moment().format('YYYY-MM-DD HH:mm:ss');
 const empty = require('is-empty');
 const mongoose = require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
-const { CODES_SUCCESS, CODES_ERROR } = require('./messages');
 const { IS_DELETED } = require('./constants');
 const isValidDate = (date, formatDate = '') => {
     let isValidDate = false;

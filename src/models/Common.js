@@ -10,7 +10,7 @@ const { generatorTime } = require('../utils/shared');
 
 const common = {
     isDeleted: { type: String, default: IS_DELETED[200] },
-    createdAt: { type: String, default: generatorTime() },
+    createdAt: { type: String, default: null },
 };
 module.exports = {
     common,

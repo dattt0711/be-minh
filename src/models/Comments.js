@@ -9,17 +9,17 @@ const commentsBase = {
     comment: {
         type: String, trim: true,
     },
-    // userObjId: {
-    //     type: ObjectId, trim: true, ref: 'users'
-    // },
+    createdBy: {
+        type: ObjectId, trim: true, ref: 'users', default: null,
+    },
     brief: {
         type: String, trim: true,
     },
     rating: {
         type: Number, trim: true,
     },
-    productObjId: {
-        type: ObjectId, trim: true, ref: 'products'
+    stadiumObjId: {
+        type: ObjectId, trim: true, ref: 'stadiums'
     },
     createdAt: {
         type: String, default: generatorTime()
