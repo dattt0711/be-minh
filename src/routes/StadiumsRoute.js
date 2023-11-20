@@ -33,7 +33,7 @@ router.route('/stadiums/create').post(async (req, res) => {
 // Update a player
 router.route('/stadiums/update').put(async (req, res) => {
     try {
-        const { name, address, image, stadiumObjId } = req.body;
+        const { name, address, image, stadiumObjId, phoneNumber , price} = req.body;
         const set = {};
         const conditions = {
             _id: convertToObjectId(stadiumObjId),
