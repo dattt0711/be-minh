@@ -13,9 +13,9 @@ const models = {};
 
 module.exports = {
     users: UsersSchema,
-    products: ProductsSchema,
-    carts: CartsSchema,
-    orders: OrdersSchema,
+    // products: ProductsSchema,
+    // carts: CartsSchema,
+    // orders: OrdersSchema,
     comments: CommentsSchema,
     stadiums: StadiumsSchema,
     bookings: BookingsSchema,

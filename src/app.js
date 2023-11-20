@@ -19,13 +19,13 @@ const server = http.createServer(app);
 
 
 const options = {
-  serverApi: {
-      version: ServerApiVersion.v1,
-      strict: true,
-      deprecationErrors: true,
-  }
+    serverApi: {
+        version: ServerApiVersion.v1,
+        strict: true,
+        deprecationErrors: true,
+    }
 };
-const MONGODB_URI = `mongodb+srv://distributed_course:minh123456@football-booking.3dx8t8c.mongodb.net/`;
+const MONGODB_URI = `mongodb+srv://distributed_course:minh123456@football-booking.3dx8t8c.mongodb.net/production`;
 mongoose.connect(MONGODB_URI, options);
 mongoose.set('strictQuery', true);
 
