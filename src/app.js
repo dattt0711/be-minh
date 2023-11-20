@@ -10,6 +10,8 @@ const cookieParser = require('cookie-parser');
 const app = express();
 const http = require('http');
 const mongoose = require('mongoose');
+const { ServerApiVersion } = require('mongodb');
+
 /**
  * Create HTTP server.
  */
@@ -17,13 +19,15 @@ const server = http.createServer(app);
 
 
 const options = {
-    autoIndex: true,
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+  serverApi: {
+      version: ServerApiVersion.v1,
+      strict: true,
+      deprecationErrors: true,
+  }
 };
-const MONGODB_URI = `mongodb://localhost:27017/iws-beauty-final`;
+const MONGODB_URI = `mongodb+srv://distributed_course:minh123456@football-booking.3dx8t8c.mongodb.net/`;
 mongoose.connect(MONGODB_URI, options);
-
+mongoose.set('strictQuery', true);
 
 const corsOptions = {
     origin: '*',
