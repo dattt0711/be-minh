@@ -26,20 +26,20 @@ router.get('/comments/list', async (req, res) => {
 router.post('/comments/create', async (req, res) => {
     try {
         const { comment, brief, rating,
-            productObjId, userObjId } = req.body;
+          stadiumObjId, userObjId } = req.body;
         const set = {};
         set.comment = comment;
         set.brief = brief;
         set.rating = rating;
         set.stadiumObjId = convertToObjectId(stadiumObjId);
-        set.userObjId = convertToObjectId(userObjId);
+        // set.userObjId = convertToObjectId(userObjId);
         const result = await CommentsModel.create(set);
         if (result) {
             return res.json(responseSuccess("Create a comment successfully!", result));
         }
         return res.json(responseError("Create a comment fail", {}))
     } catch (err) {
-        console.log(err, 'err')
+        console.log(err, 'err create')
         return res.json(responseError("Something went wrong!", err))
     }
 })

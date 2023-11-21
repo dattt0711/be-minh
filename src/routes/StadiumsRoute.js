@@ -10,6 +10,7 @@ const {
     regExpSearch, convertToObjectId,
     generatorTime,
     isEmpty,
+    populateModel,
 } = require('../utils/shared');
 // Create a new stadiums
 router.route('/stadiums/create').post(async (req, res) => {
@@ -150,10 +151,11 @@ router.route('/stadiums/book').post(async (req, res) => {
             bookingDate, userObjId } = req.body
         const findBooking = await BookingsModel.findOne({
             stadiumObjId: convertToObjectId(stadiumObjId),
+            bookingDate,
         }).lean();
         if (!isEmpty(findBooking)) {
             const existedBookingDate = findBooking.bookingDate;
-            if (moment(existedBookingDate, 'YYYY-MM-DD').isSame(bookingDate, 'day')) {
+            if (moment(existedBookingDate, 'YYYY-MM-DD').isSame(moment(bookingDate, 'YYYY-MM-DD'), 'day')) {
                 return res.json(responseError("This stadium is full in this day, please choose another day!"))
             }
         }
@@ -191,9 +193,11 @@ router.route('/bookings/list').get(async (req, res) => {
             isDeleted: "No"
         };
         if (req.query.userObjId) {
-            conditions.userObjId = convertToObjectId(userObjId)
+            conditions.createdBy = convertToObjectId(userObjId)
         }
-        const populate = [];
+        const populate = [
+          populateModel('stadiumObjId')
+        ];
         const options = {
             sort: {
                 createdAt: -1,

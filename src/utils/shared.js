@@ -36,7 +36,7 @@ const connectDatabase = (databaseName) => {
     const conn = mongoose.dbs[databaseName];
     return conn;
 };
-const convertToObjectId = (value) => ObjectId(sanitizeFieldName(value));
+const convertToObjectId = (value) =>  ObjectId(sanitizeFieldName(value || ''));
 const sanitizeFieldName = (fieldName) => { // Injection
     if (fieldName) {
         return sanitize(fieldName);
