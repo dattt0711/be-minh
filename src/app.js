@@ -63,18 +63,12 @@ app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
 app.use(cookieParser());
 
 
-const productsRoute = require('./routes/ProductsRoute');
 const commentsRoute = require('./routes/CommentsRoute');
 const usersRoute = require('./routes/UsersRoute');
-const cartsRoute = require('./routes/CartsRoute');
-const ordersRoute = require('./routes/OrdersRoute');
 const stadiumsRoute = require('./routes/StadiumsRoute');
 
 app.use('/', usersRoute);
-app.use('/', productsRoute);
 app.use('/', commentsRoute);
-app.use('/', cartsRoute);
-app.use('/', ordersRoute);
 app.use('/', stadiumsRoute);
 
 
